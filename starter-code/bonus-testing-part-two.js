@@ -64,11 +64,13 @@ var cumulativeTotal = [];
 mealsPerDay.reduce(function(prev, cur, idx){
   return cumulativeTotal[idx] = prev + cur;
 },0);
-cumulativeTotal.map(function(number, index) {
+tooHungryDay = cumulativeTotal.map(function(number, index) {
   var average = number/(index + 1);
-  console.log('the average number of meals is ' + average);
+  console.log('the average number of meals a day is ' + average);
   return average;
-});
+}).findIndex(function(cur){
+  return (cur < 4);
+}) + 1;
 
 
 
@@ -81,3 +83,8 @@ expect(
   // Write a second test expecting that tooHungryDay falls within an acceptable answer
   // based on the number of days available in the array. Remember to:
   // pass in your expression, and write a failure and a success message.
+
+expect(
+  (0 < tooHungryDay && tooHungryDay > (mealsPerDay.length + 1)),
+  'tooHungryDay should be within the ' + (mealsPerDay.length + 1) + ' since the new keeper was hired',
+  'success! tooHungryDay was within the ' + (mealsPerDay.length + 1) + ' since the new keeper was hired');
