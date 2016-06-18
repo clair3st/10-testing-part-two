@@ -50,6 +50,7 @@ expect(
   // number of times the new caretaker fed the lion. one array entry per day
 var mealsPerDay = [5, 4, 3, 6, 2, 4, 3, 4, 5, 1];
 var tooHungryDay;
+var cumulativeTotal = [];
 
   /*
    TODO:
@@ -59,6 +60,16 @@ var tooHungryDay;
    pondering protein supplements (the first day the average dips below 4
    meals)
   */
+
+mealsPerDay.reduce(function(prev, cur, idx){
+  return cumulativeTotal[idx] = prev + cur;
+},0);
+cumulativeTotal.map(function(number, index) {
+  var average = number/(index + 1);
+  console.log('the average number of meals is ' + average);
+  return average;
+});
+
 
 
 expect(
