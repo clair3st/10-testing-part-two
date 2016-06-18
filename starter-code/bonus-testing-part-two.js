@@ -50,6 +50,7 @@ expect(
   // number of times the new caretaker fed the lion. one array entry per day
 var mealsPerDay = [5, 4, 3, 6, 2, 4, 3, 4, 5, 1];
 var tooHungryDay;
+var cumulativeTotal = [];
 
   /*
    TODO:
@@ -59,6 +60,18 @@ var tooHungryDay;
    pondering protein supplements (the first day the average dips below 4
    meals)
   */
+
+mealsPerDay.reduce(function(prev, cur, idx){
+  return cumulativeTotal[idx] = prev + cur;
+},0);
+tooHungryDay = cumulativeTotal.map(function(number, index) {
+  var average = number/(index + 1);
+  console.log('the average number of meals a day is ' + average);
+  return average;
+}).findIndex(function(cur){
+  return (cur < 4);
+}) + 1;
+
 
 
 expect(
@@ -70,3 +83,8 @@ expect(
   // Write a second test expecting that tooHungryDay falls within an acceptable answer
   // based on the number of days available in the array. Remember to:
   // pass in your expression, and write a failure and a success message.
+
+expect(
+  (0 < tooHungryDay && tooHungryDay <= (mealsPerDay.length + 1)),
+  'tooHungryDay should be within the ' + (mealsPerDay.length + 1) + ' since the new keeper was hired, instead it was ' + tooHungryDay,
+  'success! tooHungryDay was within the ' + (mealsPerDay.length + 1) + ' since the new keeper was hired, it was the ' + tooHungryDay + ' day.');
