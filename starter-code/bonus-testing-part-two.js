@@ -85,6 +85,6 @@ expect(
   // pass in your expression, and write a failure and a success message.
 
 expect(
-  (0 < tooHungryDay && tooHungryDay > (mealsPerDay.length + 1)),
-  'tooHungryDay should be within the ' + (mealsPerDay.length + 1) + ' since the new keeper was hired',
-  'success! tooHungryDay was within the ' + (mealsPerDay.length + 1) + ' since the new keeper was hired');
+  (0 < tooHungryDay && tooHungryDay <= (mealsPerDay.length + 1)),
+  'tooHungryDay should be within the ' + (mealsPerDay.length + 1) + ' since the new keeper was hired, instead it was ' + tooHungryDay,
+  'success! tooHungryDay was within the ' + (mealsPerDay.length + 1) + ' since the new keeper was hired, it was the ' + tooHungryDay + ' day.');
